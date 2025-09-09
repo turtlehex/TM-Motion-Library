@@ -2,31 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Rive Gallery</title>
+  <title>Rive & Lottie Gallery</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="./styles.css" />
   <!-- Rive Canvas runtime -->
   <script src="https://unpkg.com/@rive-app/canvas@latest"></script>
+  <!-- Lottie (optional preview for .json files) -->
+  <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
 </head>
 <body>
-  <!-- Top bar with logo space -->
+  <!-- Top bar with logo, menu (mobile), brand, and search -->
   <header class="topbar">
+    <button id="menuBtn" class="icon-btn hide-desktop" aria-label="Open categories" aria-controls="sidebar" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
     <div class="brand">
       <img src="./assets/logo.svg" alt="Your logo" class="logo" />
       <span class="brand-name">CRAFT Animation Repository</span>
     </div>
 
     <!-- Material-like search -->
-    <label class="md-search">
+    <label class="md-search" aria-label="Search animations">
       <input id="search" type="search" required />
       <span class="md-label">Search animations</span>
       <span class="md-outline"></span>
     </label>
   </header>
 
+  <!-- Overlay for mobile drawer -->
+  <div id="overlay" class="overlay" hidden></div>
+
   <!-- Layout -->
-  <aside class="sidebar" aria-label="Categories">
-    <h2 class="side-title">Categories</h2>
+  <aside id="sidebar" class="sidebar" aria-label="Categories">
+    <div class="sidebar-head hide-desktop">
+      <strong>Categories</strong>
+      <button id="closeSidebar" class="icon-btn" aria-label="Close categories">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <h2 class="side-title show-desktop">Categories</h2>
     <nav id="cats" class="cat-list"></nav>
   </aside>
 
@@ -34,9 +53,10 @@
     <div class="summary">
       <div id="activeFilter" class="pill">All</div>
       <div id="count" class="muted">0 items</div>
+      <button id="openFilters" class="btn hide-desktop" aria-label="Open categories">Filters</button>
     </div>
 
-    <div id="grid" class="grid"></div>
+    <div id="grid" class="grid" aria-live="polite"></div>
   </main>
 
   <script src="./main.js"></script>
