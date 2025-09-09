@@ -52,10 +52,26 @@ body {
 .icon-btn:active { transform: translateY(1px); }
 
 .brand {
-  display: flex; align-items: center; gap: 10px; height: 60px;
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  height: 60px;
 }
-.logo { width: 188px; height: 60px; object-fit: contain; }
-.brand-name { font-weight: 600; font-size: 1.0625rem; letter-spacing: .2px; }
+
+.logo { 
+  width: 188px; 
+  height: 60px; 
+  object-fit: contain; 
+}
+
+.brand-name { 
+  font-weight: 600; 
+  font-size: 1.0625rem; 
+  letter-spacing: .2px; 
+  margin-right: auto;
+  width: 100%;
+  text-align: center;
+}
 
 /* Material-inspired search (outlined) */
 .md-search {
